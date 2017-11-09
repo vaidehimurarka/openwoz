@@ -1,0 +1,100 @@
+extends ./layout.pug
+
+block title
+  title OpenWoZ - Robot Profile
+
+block content
+  br
+  .row-fluid
+    .col-md-12.text-center
+      h1 #{profile.profileName}
+      br
+      br
+  .row-fluid
+    .col-md-4.text-justify(style="border-right:1px solid black")
+      .row-fluid
+        .col-md-12.text-center
+          img.img-responsive(src="../../"+profile.image,width="200px",height="300px",style="display: block;margin: 0 auto;")
+          br
+          br
+      p Description: #{profile.purpose}
+      p Plateform: #{profile.platform}  
+    .col-md-8
+      .row-fluid
+        .col-md-12
+          h2 Events
+          hr
+          .row-fluid
+            .col-md-12.text-center(style="height:35px;")
+              span.label.label-success(id="msg",style="display:none")
+              br
+              br
+          each event, ename in profile.events
+            .row-fluid
+              .col-md-12
+                .row-fluid.equal
+                  .col-md-8
+                    h3 #{event.name} 
+                  .col-md-4(style="vertical-align:center;text-align:right")
+                    a.btn-sm.btn-primary.triggerEvent(id=event.name,href="javascript:;",style="height:35px") Trigger!
+                hr
+                hr
+                br
+      .row-fluid 
+        h2 Sequences
+        hr
+        .row-fluid
+          form(action="/sequences/"+profile.profileKey,method="post")
+            table
+              tr
+                th Event
+                th Time (ms)
+              each i in [0,1,2]  
+                tr
+                  td
+                    select(name=i)
+                      option(selected disabled) Select Event  
+                      each event, ename in profile.events
+                        option(value=event.name) #{event.name}
+                  td
+                    input(type="text", name=i, placeholder="10")
+            br
+            input(type="submit", value="Trigger")
+
+block userscripts
+  script.
+    function overlay(){
+      var over = '<div id="overlay" style="width:100%;height:100%;">' +
+            '<img id="loading" src="../../imgs/openwoz.gif">' +
+            '</div>';
+      $(over).appendTo('body');
+    }
+
+    $('.triggerEvent').click(function () {
+        overlay();
+        var eventname = $(this).attr("id");
+        $('#msg').css({
+          display: "none"
+        });
+        $.ajax({
+            url: "#{profile.profileKey}/"+eventname,
+            type: "GET",
+            success: function(data){
+                if(data.msg){
+                  $('#msg').text(data.msg);
+                  $('#msg').css({
+                    display: "inline"
+                  });
+                }
+                setTimeout(function(){
+                  $('#overlay').remove();
+                }, 1000);
+                setTimeout(function(){
+                $('#msg').text("");
+                  $('#msg').css({
+                    display: "none"
+                  });
+                }, 4000);
+            }
+        });
+    });

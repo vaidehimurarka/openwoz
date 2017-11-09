@@ -1,0 +1,43 @@
+Queries : 
+
+describe openwoz_robots;
+describe openwoz_robot_events;
+
+SELECT * from openwoz_robots;
+SELECT * from openwoz_robot_events;
+
+INSERT INTO openwoz_robots VALUES ("blossom","Blossom", "blossom","imgs/blossom.jpg","Awesome robot.","Raspberry Pi");
+INSERT INTO openwoz_robot_events VALUES ("breath","blossom","breath","blossom.events.Breath","breath");
+
+//delete for some robot. 
+delete from openwoz_robot_events where robot_key='some_robot';
+delete from openwoz_robots where robot_key='some_robot';
+
+--------------
+
+INSERT INTO openwoz_robot_events VALUES ("glowled","some_robot","glowled","somerobot.events.BlinkLedEvent","blinkLed");
+
+CREATE TABLE openwoz_robots (robot_key VARCHAR(255) PRIMARY KEY, robot_name VARCHAR(255), channel_name VARCHAR(255),image_path VARCHAR(255), purpose VARCHAR(255), platform VARCHAR(255));
+
+CREATE TABLE openwoz_robot_events (event_key VARCHAR(255), robot_key VARCHAR(255), event_name VARCHAR(255),class_name VARCHAR(255), method_name VARCHAR(255),PRIMARY KEY (event_key,robot_key),FOREIGN KEY (robot_key) REFERENCES openwoz_robots(robot_key));  
+
+
+INSERT INTO openwoz_robots VALUES ("vyo_robot","Vyo Robot", "vyo_robot","imgs/vyo.jpg","A social robot designed to manage your smart 
+home.","Raspberry Pi"),("some_robot","Some Robot","some_robot","imgs/some_robot.jpg","A social robot designed to manage your smart home.","Raspberry Pi");
+
+INSERT INTO openwoz_robot_events VALUES ("headnod","vyo_robot","headnod","vyo.events.HeadNodEvent","nodHead"),("glowled","vyo_robot","glowled","vyo.events.BlinkLedEvent","blinkLed");
+
+--------------
+//var sql = "CREATE TABLE openwoz_robots (robot_key VARCHAR(255) PRIMARY KEY, robot_name VARCHAR(255), channel_name VARCHAR(255),image_path VARCHAR(255), purpose VARCHAR(255), platform VARCHAR(255))";  
+
+//"CREATE TABLE openwoz_robot_events (event_key VARCHAR(255), robot_key VARCHAR(255), event_name VARCHAR(255),class_name VARCHAR(255), method_name VARCHAR(255),PRIMARY KEY (event_key,robot_key),FOREIGN KEY (robot_key) REFERENCES openwoz_robots(robot_key))";  
+
+
+SELECT * from openwoz_robot_events where robot_key="vyo_robot";
+SELECT * from openwoz_robot_events where robot_key="some_robot";
+
+
+
+
+
+
