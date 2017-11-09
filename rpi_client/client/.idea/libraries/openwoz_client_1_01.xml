@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="openwoz-client-1.01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../sample/lib/openwoz-client-1.0.jar!/" />
+      <root url="file:///opt/pi4j/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file:///opt/pi4j/lib" recursive="false" />
+  </library>
+</component>
