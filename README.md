@@ -170,7 +170,7 @@ Download the redis-server.
       The new build script will compile and install it all for you – it does use the sudo command at one point, so you may wish to inspect the script before running it.  
       Check the version, and test if is installed properly.  
       `gpio -v`  
-      Refer (Wiring Pi WebSite)[http://wiringpi.com/download-and-install/]   
+      Refer [Wiring Pi WebSite](http://wiringpi.com/download-and-install/)   
         
  **Install Pi4j**   
    Note : To be performed only after Wiring Pi and JDK are setup.  
@@ -183,12 +183,11 @@ Download the redis-server.
   - invokes the 'apt-get update' command on the Pi4J APT repository to update the local package database  
   - invokes the 'apt-get install pi4j' command to perform the download and installation  
   
- **Install Intellij**
-      
-    Note that you should start intellij only through a script. 
-    Go to the folder where you downloaded Intellij, and run the following commands. 
+ **Install Intellij**  
+    [Download Intellij](https://www.jetbrains.com/help/idea/installing-and-launching.html)   
+    Note that you should start intellij only through a script. Go to the folder where you downloaded Intellij, and run the following commands.   
     `cd bin`  
-    `sudo sh intellij.sh`  
+    `sudo sh idea.sh`  
 
 **Download the code base**    
    `mkdir openwoz`   
