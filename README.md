@@ -1,16 +1,15 @@
 # OpenWoZ
----
 ## Description
 The project involves developing a community-standard open-source framework for a Wizard-of-Oz (WoZ) system. WoZ is a common technique enabling Human-Robot Interaction researchers to explore aspects of interaction not yet backed by autonomous systems.
 
 The system will include a web application running on an embedded platform which controls a robotics system. It also includes a platform-agnostic client framework that gets updated from a user-accessible database. The system needs to be generic enough to ensure that new robot behavior can be added easily and during run-time.
 
 ## Softwares Required On Ubuntu / Mac OSX: 
- * Homebrew. 
- * NPM (node) 
- * redis-server.
- * mysql.
- * git
+ - Homebrew. 
+ - NPM (node) 
+ - redis-server.
+ - mysql.
+ - git
  
 ## Installation for Ubuntu / Mac OSX : 
 * **Install Homebrew**   
@@ -133,9 +132,77 @@ Download the redis-server.
       `mysql.server stop`
    3. Go to node.js terminal 
        Go to mysql terminal and press `Ctrl+C`  
-       
-       
-  ## Installation for Raspberry Pi : 
-  
+         
+  ## Installation for Raspberry Pi :   
+  **External Hardware Required**  :
+  - Raspberry Pi Kit with charger(power). 
+  - External Monitor.
+  - HDMI Cable.
+  - USB Keyboard.
+  - USB Mouse. 
+  - Bread-board.
+  - Bootable Memory card. 
+  - Couple of LED. 
+  - Couple of wires to connect Pin with LED. 
+  - Better option is to purchase kit from amazon. Refer [Amazon link for Hardware](https://www.amazon.com/CanaKit-Raspberry-Ultimate-Starter-Kit/dp/B01C6Q4GLE/ref=sr_1_11?s=electronics&ie=UTF8&qid=1510641738&sr=1-11&keywords=raspberry+pi+3). This is kit has an excellent with essential hardware for raspberry pi, OS setup done, required for the project. You might however require monitor / keyboard and screen. 
+  If the OS is not installed on raspberry pi Kit, you might follow the "Prerequisite Installation" details mentioned below. 
+    
+  **Prerequisite Installation :**   
+     Refer [NOOBS Setup Guide](https://www.raspberrypi.org/help/noobs-setup/2/). Note that you need a bootable memory card only. Once the OS is installed on memory card, insert it into raspberry pi and power up raspberry, connect the external peripherals (mouse, keyboard, monitor).  
+    
+  **Software Required on Raspberry Pi**
+  - Intellij. 
+  - Homebrew (Instructions same as above)
+  - git 
+  - pi4j library.  
+  - Wiring Pi.
+  - JDK8.(Comes preinstalled)
+    
+  **Install Wiring Pi and Git**  
+       Run the following commands.   
+      `sudo apt-get install git-core`  
+      `sudo apt-get update`  
+      `sudo apt-get upgrade`  
+      `git clone git://git.drogon.net/wiringPi`  
+      `cd ~/wiringPi`  
+      `git pull origin`  
+      `./build`  
+      The new build script will compile and install it all for you – it does use the sudo command at one point, so you may wish to inspect the script before running it.  
+      Check the version, and test if is installed properly.  
+      `gpio -v`  
+      Refer (Wiring Pi WebSite)[http://wiringpi.com/download-and-install/]   
         
+ **Install Pi4j**   
+   Note : To be performed only after Wiring Pi and JDK are setup.  
+   Note: This installation method requires that your RaspberryPi is connected to the Internet.)    
+   The simplest method to install Pi4J on your RaspberryPi is to execute the following command directly on your RaspberryPi.  
+   `curl -s get.pi4j.com | sudo bash`    
+ This method will download and launch an installation script that perform the following steps:  
+  - adds the Pi4J APT repository to the local APT repositories  
+  - downloads and installs the Pi4J GPG public key for signature validation  
+  - invokes the 'apt-get update' command on the Pi4J APT repository to update the local package database  
+  - invokes the 'apt-get install pi4j' command to perform the download and installation  
+  
+ **Install Intellij**
+      
+    Note that you should start intellij only through a script. 
+    Go to the folder where you downloaded Intellij, and run the following commands. 
+    `cd bin`  
+    `sudo sh intellij.sh`  
+
+**Download the code base**    
+   `mkdir openwoz`   
+   `cd openwoz`  
+   `git clone https://github.com/vaidehimurarka/openwoz.git`  
+   `cd openwoz/client`  
+   
+   
+  **Trouble Shooting Tips**
+  * Issue: If you get this error on intellij while running the project "Unable to determine hardware version. I see Hardware : BCM2835 expecting BCM2708 or BCM 2709"  
+    * Answer: Downgrade the raspberry pi to :   
+    `sudo rpi-update 52241088c1da59a359110d39c1875cda56496764` 
+  * Issue: Raspberry pi runs slow if hot. 
+  * Placing heatsink on the raspberry pi 
+
+  
         
