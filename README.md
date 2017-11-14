@@ -5,25 +5,44 @@ The project involves developing a community-standard open-source framework for a
 
 The system will include a web application running on an embedded platform which controls a robotics system. It also includes a platform-agnostic client framework that gets updated from a user-accessible database. The system needs to be generic enough to ensure that new robot behavior can be added easily and during run-time.
 
-## Dependencies
-Install Packages
-
-* NodeJS
-* npm
-
+## Softwares Required On Ubuntu : 
+ * Homebrew. 
+ * NPM (node) 
+ * redis-server.
+ * mysql.
+ * git
+ 
 ## Installation for Ubuntu
+* **Install Homebrew**   
+Paste the following command on terminal :     
+`/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+Refer Homebrew [Webpage](https://brew.sh/)  
 
-* Install nodejs and npm packages. Also install forever npm package globally
 
-> sudo apt-get update <br/>
-> sudo apt-get install nodejs npm <br/>
-> sudo npm install forever -g
+* **Install nodejs**  
+Once homebrew is installed, install nodejs by following command :   
+`brew install node`.
 
-* Create symlink for nodejs
+* **Install Redis server**   
+Download the redis-server. 
+`wget http://download.redis.io/redis-stable.tar.gz`  
+`tar xvzf redis-stable.tar.gz`  
+`cd redis-stable`  
+`make`  
 
-> sudo ln -s "$(which nodejs)" /usr/bin/node
+At this point you can try if your build works correctly by typing make test, but this is an optional step. After the compilation the src directory inside the Redis distribution is populated with the different executables that are part of Redis:
+**redis-server** is the Redis Server itself.
+**redis-sentinel** is the Redis Sentinel executable (monitoring and failover).
+**redis-cli** is the command line interface utility to talk with Redis.
+**redis-benchmark** is used to check Redis performances.
+**redis-check-aof** and **redis-check-dump** are useful in the rare event of corrupted data files.
+It is a good idea to copy both the Redis server and the command line interface in proper places, either manually using the following commands:
+`sudo cp src/redis-server /usr/local/bin/`
+`sudo cp src/redis-cli /usr/local/bin/`
 
-* Install Redis server
+Refer [Redis Server](https://redis.io/topics/quickstart) for more details.
+
+
 
 > sudo apt-get install build-essential <br/>
 > sudo apt-get install tcl8.5 <br/>
@@ -87,6 +106,7 @@ In the folder server, start the server or to stop the server using the below
 
 > forever start|stop server.js
 
+---
 ## Available Links
 
 > GET ip_address/
