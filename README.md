@@ -24,47 +24,30 @@ Once homebrew is installed, install nodejs by following command :
 `brew install node`.
 
 * **Install Redis server**   
-Download the redis-server. 
+Download the redis-server.   
 `wget http://download.redis.io/redis-stable.tar.gz`  
 `tar xvzf redis-stable.tar.gz`  
 `cd redis-stable`  
 `make`  
 
-At this point you can try if your build works correctly by typing make test, but this is an optional step. After the compilation the src directory inside the Redis distribution is populated with the different executables that are part of Redis:
-**redis-server** is the Redis Server itself.
-**redis-sentinel** is the Redis Sentinel executable (monitoring and failover).
-**redis-cli** is the command line interface utility to talk with Redis.
-**redis-benchmark** is used to check Redis performances.
-**redis-check-aof** and **redis-check-dump** are useful in the rare event of corrupted data files.
-It is a good idea to copy both the Redis server and the command line interface in proper places, either manually using the following commands:
-`sudo cp src/redis-server /usr/local/bin/`
-`sudo cp src/redis-cli /usr/local/bin/`
+   At this point you can try if your build works correctly by typing make test, but this is an optional step. After the compilation the src directory inside the Redis distribution is populated with the different executables that are part of Redis:  
+**redis-server** is the Redis Server itself.  
+**redis-sentinel** is the Redis Sentinel executable (monitoring and failover).  
+**redis-cli** is the command line interface utility to talk with Redis.  
+**redis-benchmark** is used to check Redis performances.  
+**redis-check-aof** and **redis-check-dump** are useful in the rare event of corrupted data files.   
+    It is a good idea to copy both the Redis server and the command line interface in proper places, either manually using the following commands:    
+`sudo cp src/redis-server /usr/local/bin/`  
+`sudo cp src/redis-cli /usr/local/bin/`  
+Refer [Redis Server](https://redis.io/topics/quickstart) for more details.  
 
-Refer [Redis Server](https://redis.io/topics/quickstart) for more details.
+* Comment out the line "bind 127.0.0.1" in redis.conf file (typically /etc/redis/6379.conf). In the same config file search for requirepass comment it. Let's not use password during intial setup, if you want password uncomment it, and add alphanumeric password.
+
+* **Start the redis-server**
+  The simplest way to start the Redis server is just executing the redis-server binary without any argument.  
+  $ `redis-server`
 
 
-
-> sudo apt-get install build-essential <br/>
-> sudo apt-get install tcl8.5 <br/>
-> wget http://download.redis.io/releases/redis-stable.tar.gz <br/>
-> tar xzf redis-stable.tar.gz <br/>
-> cd redis-stable <br/>
-> make <br/>
-> //Can skip the next step but highly suggested to detect any issues <br/>
-> make test <br/>
-> sudo make install <br/>
-> <br/>
-> //Keep pressing enter for the below command to install redis with default config <br/>
-> sudo utils/install_server.sh <br/>
-
-* Comment out the line "bind 127.0.0.1" in redis.conf file (typically /etc/redis/6379.conf)
-* In the same config file search for requirepass and uncomment it and change the password to an alphanumeric and complicated.
-
-> requirepass "your_redis_password"
-
-* Start the server
-
-> sudo service redis_6379 restart
 
 * Download openwoz latest code using
 
