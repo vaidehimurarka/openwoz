@@ -97,59 +97,45 @@ Download the redis-server.
   Once you are done using the mysql :  
   `mysql.server stop`
   
-* **Downloading the code base** 
+* **Download the code base** 
 
-* **Running the node js server** 
-
-* Download openwoz latest code using
-
-> cd ~ <br/>
-> wget https://github.com/amirajdhawan/openwoz/archive/release.tar.gz <br/>
-> tar xzf release.tar.gz <br/>
-> cd openwoz-release/server <br/>
-
-* Edit the file server.js and set the redis password in the first line which you set in the redis configuration file
-
-> var redis_pass = "redis_password_that_you_set_above"
-
-* Install npm dependencies.
-
-> sudo npm install <br/>
-
-* Start the server using forever
-
-> forever start server.js
-
-### Make it available across server restarts
-
-> crontab -u {username} -e <br/>
-
-* At the end append the following line
-
-> @reboot /usr/local/bin/forever start /path/to/openwoz/folder/server/server.js
-
-* Restart and the server will automatically start across reboots
-
-The server is accessible in ip_address
-
-## Usage
-In the folder server, to restart the server use the below
-
-> forever restart server.js
-
-In the folder server, start the server or to stop the server using the below
-
-> forever start|stop server.js
-
----
-## Available Links
-
-> GET ip_address/
-
-> GET ip_address/robots
-
-> GET ip_address/robots/{profile_name}
-
-> GET ip_address/robots/{profile_name}/{event_name}
-
-> GET ip_address/robots/{profile_name}/{event_name}/trigger
+  `mkdir openwoz`  
+  `cd openwoz`  
+  `git clone https://github.com/vaidehimurarka/openwoz.git`  
+  `cd openwoz/server`  
+* **Install node dependencies**   
+   `cd openwoz/server`  
+   `sudo npm install express`  
+   `sudo npm install pug`  
+   `sudo npm install mysql`  
+   `sudo npm install fs`  
+   `sudo npm install redis`  
+   `sudo npm install body-parser`  
+   `sudo npm install path`  
+   `sudo npm install synchronize`    
+   `sudo npm install promise`  
+     
+ * **Run the node js server.**   
+   1. Create the new tab in terminal, start the redis-server.  
+     `redis-server /usr/local/etc/redis.conf`  
+   2. Create the new tab in terminal,start the mysql server.  
+      `mysql.server start`   
+      `sudo mysql -h 127.0.0.1 -u root`
+   3. Create the new tab and start node.js server. 
+      `cd openwoz/server` 
+      `sudo node server`  
+        
+ * **Stop the execution**   
+   1. Stop the redis-server.  
+      Go to redis-server terminal and press `Ctrl+C`.
+   2. Stop the mysql server.   
+      Go to mysql terminal and press `Ctrl+C`  
+      `mysql.server stop`
+   3. Go to node.js terminal 
+       Go to mysql terminal and press `Ctrl+C`  
+       
+       
+  ## Installation for Raspberry Pi : 
+  
+        
+        
