@@ -4,6 +4,13 @@ The project involves developing a community-standard open-source framework for a
 
 The system will include a web application running on an embedded platform which controls a robotics system. It also includes a platform-agnostic client framework that gets updated from a user-accessible database. The system needs to be generic enough to ensure that new robot behavior can be added easily and during run-time.
 
+## Demo Video Links : 
+- [Basic Setup Demo](https://www.youtube.com/watch?v=RirE_TGkp_M)
+- [MySql Demo](https://www.youtube.com/watch?v=j7y57TELbSM)
+- [Sequence Demo](https://www.youtube.com/watch?v=2CtL1sl74WE)
+- [Parameter Demo](https://www.youtube.com/watch?v=e8m6Bf_yGFU)
+
+
 ## Softwares Required On Ubuntu / Mac OSX: 
  - Homebrew. 
  - NPM (node) 
